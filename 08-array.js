@@ -53,4 +53,92 @@ console.log(ingr, ingr.length);
 // join : 배열 내부의 요소(아이템)를 한 문장으로 합친다
 console.log(ingr, "-> 김장재료: "+ ingr.join(", ")); // (", ")(콤마)를 기준으로 끄집어낸다
 
+console.log("============== push, pop -> Stack ==============");
+// push, pop -> Stack 자료형처럼 활용이 가능하다
+// Stack : Last Input First Output(LIFO 자료형)
+let fruits = [];
+console.log(fruits.push("Apple"), fruits);
+console.log(fruits.push("Banana"), fruits);
+console.log(fruits.push("Carot"), fruits);
+// 인출 : pop -> 배열의 뒤에서
+console.log(fruits.pop(), fruits);
+console.log(fruits.pop(), fruits);
+console.log(fruits.pop(), fruits);
 
+console.log("============== push, shift -> queue ==============");
+// push, shift -> queue 자료형처럼 활용이 가능하다
+// queue : First Input First Output(FIFO 자료형)
+console.log(fruits);
+console.log(fruits.push("Apple"), fruits);
+console.log(fruits.push("Banana"), fruits);
+console.log(fruits.push("Carot"), fruits);
+// shift : 배열의 첫번째 요소를 인출하여 삭제한다
+console.log(fruits.shift(), fruits);
+console.log(fruits.shift(), fruits);
+console.log(fruits.shift(), fruits);
+
+console.log("============== splice ==============");
+// splice : 배열 요소 인출 후 삭제하거나 추가를 동시에 할 수 있는 메서드
+fruits = ["Apple", "Banana", "Carot", "Durian"];
+console.log(fruits);
+// 조건인수가 1개이면 시작인덱스에서 끝까지 추출한다
+console.log(fruits.splice(2)); // 삭제한 결과값을 보여준다
+console.log(fruits); // 삭제 후 남은 결과값만 보여준다
+
+fruits = ["Apple", "Banana", "Carot", "Durian"];
+console.log(fruits);
+// 조건 인수가 2개이면 시작인덱스로부터 조건갯수만큼 추출한다
+console.log(fruits.splice(2, 1));
+console.log(fruits);
+
+fruits = ["Apple", "Banana", "Carot", "Durian"];
+console.log(fruits);
+// 조건 인수가 3개이면 시작인덱스로부터 조건갯수만큼 추출하고 추가할 요소를 입력하여 추출한다
+console.log(fruits.splice(2, 1, "kiwi", "Mango"));
+console.log(fruits);
+
+// reverse : 순서 반전시키기
+fruits = ["Apple", "Banana", "Carot", "Durian"];
+console.log(fruits);
+fruits.reverse();
+console.log(fruits);
+
+// slice : 배열의 요소를 추출하여 새로운 배열 생성
+console.log(fruits);
+let slice = fruits.slice(1, 2);
+console.log(slice);
+console.log(fruits);
+
+// split : 구분자를 기준으로 문자열을 분리하여 배열을 생성
+const str = "JavaScript is something strange than other languages";
+let chunks = str.split(" ");
+console.log(chunks);
+
+console.log("=============sort=============");
+fruits = ["Carot", "Durian", "Apple", "Mango", "kiwi", "Banana"];
+console.log("원본배열: ", fruits);
+fruits.sort(); // 정렬순서 : 오름차순
+console.log("오름차순정렬: ", fruits);
+
+// 정렬 규칙을 정하고자 할 때 : sort 메서드를 매개변수로 전달해줘야한다
+fruits = ["Carot", "Durian", "Apple", "Mango", "kiwi", "Banana"];
+console.log("원본배열: ", fruits);
+
+// 역순정렬 정의
+fruits.sort((v1, v2) => {
+    // 정렬 키 함수 : 두개 요소의 선후 관계를 결정해줘야 한다
+    // 리턴값이
+    //         음수일 경우 v1이 앞에 온다
+    //         양수일 경우 v1이 뒤에 온다 (v2가 앞에 온다)
+    //         0일 경우 순서를 바꾸지 않는다 (순위가 같다)
+        if(v1 < v2) return 1;
+        if(v1 > v2) return -1;
+        if(v1 == v2) return 0;
+});
+console.log(fruits);
+
+// 문자열 길이로 소팅
+fruits.sort((v1, v2) => {
+    return v1.length - v2.length;
+});
+console.log("문자열 길이로  소팅: ", fruits);
